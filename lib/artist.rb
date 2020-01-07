@@ -39,7 +39,7 @@ class Artist
     found_artist = self.all.find {|artist| artist.name == artist_name}
     if found_artist
       found_artist
-    else 
+    else
       new_artist = self.new(artist_name)
       new_artist.save
       new_artist
