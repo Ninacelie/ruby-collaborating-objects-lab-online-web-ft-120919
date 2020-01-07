@@ -13,18 +13,15 @@ class Song
     @@all
   end
 
-  def self.new_by_filename(file)
-    song = self.new
-    song_name = file.split(" - ")[1]
-    song.artist_name = file.split(" - ")[0]
-    song.artist = Artist.find_or_create_by_name(name)
-    song
+  def self.find_or_create_by_name(name)
+    if self.find(name)
+      self.find(name)
+    else
+      self.create(name)
+    end
   end
 
-
-  def artist_name=(name)
-    artist = Artist.find_or_create_by_name(name)
-    self.artist = artist
-    artist.add_song(self)
+  def print_songs
+    self.songs.each {|song| puts song.name}
   end
 end
