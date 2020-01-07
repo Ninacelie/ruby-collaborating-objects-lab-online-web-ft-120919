@@ -53,13 +53,8 @@ class Artist
  #     self.create(name)
  #   end
  # end
- def print_songs
-   self.each do |song|
-     puts song.name
-   end
- end
+
+  def print_songs
+    self.songs.each {|song| puts song.name}
+  end
 end
-#   def print_songs
-#     self.songs.each {|song| puts song.name}
-#   end
-# end
