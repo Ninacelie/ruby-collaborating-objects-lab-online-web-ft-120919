@@ -1,6 +1,5 @@
-require 'pry'
-
 class MP3Importer
+
   attr_accessor :path
 
   def initialize(path)
@@ -8,17 +7,11 @@ class MP3Importer
   end
 
   def files
-    files = []
-    Dir.new(self.path).each do |file|
-      files << file if file.length > 4
-      binding.pry
-    end
-    files
+    @file ||= Dir.glob("#{path}/*.mp3").map { |file_name| file_name.gsub("#{path}/","") }
   end
 
   def import
-    self.files.each do |filename|
-      Song.new_by_filename(filename)
-    end
+    files.each { |file| Song.new_by_filename(file) }
   end
+  
 end
